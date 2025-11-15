@@ -1,5 +1,6 @@
 import 'package:cuenta/config/router/router_admin.dart';
 import 'package:cuenta/presentation/admin/layout/layout.dart';
+import 'package:cuenta/presentation/admin/producto/producto_screen.dart';
 import 'package:cuenta/presentation/public/auth/auth_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -10,6 +11,11 @@ final appRouter = GoRouter(
       path: '/',
       name: 'login',
       builder: (context, state) => const AuthScreen(),
+    ),
+    GoRoute(
+      path: '/producto', 
+      name: 'producto',
+      builder: (context, state) => const ProductoScreen(),
     ),
     ShellRoute(
       builder: (context, state, child) => Layout(child: child),

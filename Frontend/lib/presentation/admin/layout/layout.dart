@@ -1,4 +1,6 @@
+import 'package:cuenta/config/router/router_admin.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Layout extends StatelessWidget {
   final Widget child;
@@ -9,6 +11,24 @@ class Layout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Administrador')),
       body: child,
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            ...routerConfigAdmin
+                .where((s) => s.inDrawer)
+                .map(
+                  (screen) => ListTile(
+                    leading: Icon(screen.icon),
+                    title: Text(screen.title),
+                    onTap: () {
+                      Navigator.pop(context); // Cierra el drawer
+                      context.go( screen.patch);
+                    },
+                  ),
+                )
+          ],
+        ),
+      ),
     );
   }
 }
