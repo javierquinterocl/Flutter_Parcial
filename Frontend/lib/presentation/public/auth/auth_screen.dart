@@ -49,7 +49,11 @@ class _AuthScreenState extends State<AuthScreen> {
                     title: Text(screen.title),
                     onTap: () {
                       Navigator.pop(context); // Cierra el drawer
-                      context.go( screen.patch);
+                      //  VERIFICA SI LA RUTA ES LA MISMA  
+                      final currentLocation = GoRouterState.of(context).uri.path;
+                      if (currentLocation != screen.patch) {
+                        context.go(screen.patch);
+                      }
                     },
                   ),
                 )

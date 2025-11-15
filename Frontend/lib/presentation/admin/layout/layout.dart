@@ -9,7 +9,7 @@ class Layout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Administrador')),
+      appBar: AppBar(title: Text('Productos')),
       body: child,
       drawer: Drawer(
         child: ListView(
@@ -22,7 +22,11 @@ class Layout extends StatelessWidget {
                     title: Text(screen.title),
                     onTap: () {
                       Navigator.pop(context); // Cierra el drawer
-                      context.go( screen.patch);
+                      // VERIFICA SI LA RUTA ES LA MISMA  
+                      final currentLocation = GoRouterState.of(context).uri.path;
+                      if (currentLocation != screen.patch) {
+                        context.go(screen.patch);
+                      }
                     },
                   ),
                 )
